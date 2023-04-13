@@ -194,7 +194,7 @@ const aarzoo=()=>{
         })
       } */}
 
-      <p></p>
+      <p>Data fetched</p>
     </div>
 
   )
