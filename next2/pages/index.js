@@ -124,15 +124,77 @@
 // }
 
 import Home from '@/Components/Home'
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 const index = () => {
+
+  const [data, setData] = useState([]);
+  const fun1  = ()=>{
+    fetch('https://jsonplaceholder.typicode.com/users', {
+
+    }).then((res)=>{
+      return res.json();
+    }).then((data)=>{
+      console.log(data,"rrrrrrrrrrrrrr")
+      setData(data);
+    }).catch((err)=>{
+      console.log(err, "Error");
+    })
+
+
+  }
+
+
+const aarzoo=()=>{
+  console.log('hehehe')
+  fun1()
+}
+  
+  // useEffect(()=>
+  //   fun1()
+  //   // fun2()
+  // }, [])
   return (
     <div>
      
       <Home/>  
-      <button> Click me </button>
+      <button onClick={aarzoo}> Click me </button>
       <div className='div'>Hello from div!</div>
+      {
+        data.map((item)=>{
+          return(<>
+          <li> {item.name}</li>
+          </>)
+        })
+      }
+
+      {/* <li>
+        <Link href ='/home'>Home</Link>
+      </li>
+
+      <li>
+        <Link href ='/about'>About</Link>
+      </li>
+
+      <li>
+        <Link href ='/contact'>Contact</Link>
+      </li>
+
+      <li>
+        <Link href ='/login'>Login</Link>
+      </li>
+
+      <li>
+        <Link href ='/signup'>Signup</Link>
+      </li> */}
+
+      {/* {
+        data.map((dataObj, index)=>{
+          return (<p>{dataObj.name}</p>)
+        })
+      } */}
+
+      <p></p>
     </div>
 
   )
